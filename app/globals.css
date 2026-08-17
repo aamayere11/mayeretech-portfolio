@@ -24,3 +24,82 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* ================================
+   MAYERETECH NAVBAR
+================================ */
+
+.navbar-menu {
+  display: flex;
+  margin-left: auto;
+}
+
+.navbar-menu .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.navbar-menu .nav-link {
+  font-weight: 500;
+  color: #333;
+  padding: 8px 14px;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu .nav-link:hover {
+  color: #0d6efd;
+}
+
+.navbar-menu .contact-item {
+  margin-left: 10px;
+}
+
+/* Mobile */
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar-menu {
+    display: none;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .navbar-menu.open {
+    display: block;
+  }
+
+  .navbar-menu .navbar-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 15px 0;
+  }
+
+  .navbar-menu .nav-link {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .navbar-menu .contact-item {
+    margin-left: 0;
+    margin-top: 12px;
+  }
+
+  .navbar-menu .contact-item a {
+    display: block;
+    text-align: center;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-menu {
+    display: flex !important;
+  }
+}
