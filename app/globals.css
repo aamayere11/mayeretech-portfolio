@@ -103,3 +103,41 @@ body {
     display: flex !important;
   }
 }
+css
+/* =========================
+   Projects Section
+========================= */
+
+.project-card {
+  transition: all 0.3s ease;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.project-icon {
+  height: 200px;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-icon {
+  transform: scale(1.03);
+}
+
+.project-button {
+  transition: all 0.2s ease;
+}
+
+.project-button:hover {
+  transform: translateY(-2px);
+}
+
+.project-tech {
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+

@@ -68,17 +68,16 @@ export default function Projects() {
               className="col-md-6 col-lg-4"
               key={project.title}
             >
-              <div className="card border-0 shadow-sm h-100">
+              <div className="card project-card border-0 shadow-sm h-100">
 
                 {/* Project Image Placeholder */}
                 <div
-                  className="d-flex align-items-center justify-content-center"
-                  style={{
-                    height: "200px",
-                    background:
-                      "linear-gradient(135deg, #0d6efd, #6ea8fe)",
-                  }}
-                >
+  className="project-icon d-flex align-items-center justify-content-center"
+  style={{
+    background:
+      "linear-gradient(135deg, #0d6efd, #6ea8fe)",
+  }}
+>
                   <FaGlobe
                     className="text-white"
                     style={{ fontSize: "4rem" }}
@@ -105,7 +104,7 @@ export default function Projects() {
                       (technology) => (
                         <span
                           key={technology}
-                          className="badge bg-light text-primary border"
+                          className="badge project-tech bg-light text-primary border"
                         >
                           {technology}
                         </span>
@@ -120,7 +119,7 @@ export default function Projects() {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-primary btn-sm"
+                      className="btn btn-primary btn-sm project-button"
                     >
                       <FaExternalLinkAlt className="me-2" />
                       Live Demo
@@ -130,7 +129,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-outline-dark btn-sm"
+                      className="btn btn-outline-dark btn-sm project-button"
                     >
                       <FaGithub className="me-2" />
                       GitHub
