@@ -12,8 +12,8 @@ const projects = [
       "A professional website for the Research & Documentation Directorate featuring departments, publications, news, gallery, leadership, and an administrative dashboard.",
     technologies: ["Next.js", "MongoDB", "Bootstrap"],
     type: "Government / Organization Website",
-    live: "#",
-    github: "#",
+    live: "https://rdd-website.vercel.app/",
+    github: "https://github.com/aamayere11/rdd-website",
   },
   {
     title: "Empowerment Status Checker",
@@ -21,8 +21,8 @@ const projects = [
       "A web application that allows applicants to check their empowerment application status using their identification number.",
     technologies: ["Next.js", "MongoDB", "API"],
     type: "Web Application",
-    live: "#",
-    github: "#",
+    live: "https://empowerment-status-checker-one.vercel.app/",
+    github: "https://github.com/aamayere11/empowerment-status-checker",
   },
   {
     title: "MAYERETECH Portfolio",
@@ -30,8 +30,8 @@ const projects = [
       "A modern personal portfolio website showcasing my skills, projects, services, and experience as a Front-End Developer and Web Designer.",
     technologies: ["Next.js", "React", "Bootstrap"],
     type: "Personal Portfolio",
-    live: "#",
-    github: "#",
+    live: "https://mayeretech-portfolio.vercel.app/",
+    github: "https://github.com/aamayere11/mayeretech-portfolio",
   },
 ];
 
@@ -116,21 +116,25 @@ export default function Projects() {
                   {/* Buttons */}
                   <div className="mt-auto d-flex gap-2">
 
-                    <Link
+                    <a
                       href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="btn btn-primary btn-sm"
                     >
                       <FaExternalLinkAlt className="me-2" />
                       Live Demo
-                    </Link>
+                    </a>
 
-                    <Link
+                    <a
                       href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="btn btn-outline-dark btn-sm"
                     >
                       <FaGithub className="me-2" />
                       GitHub
-                    </Link>
+                    </a>
 
                   </div>
 
