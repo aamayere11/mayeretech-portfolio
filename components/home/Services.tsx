@@ -5,19 +5,20 @@ import {
   FaPaintBrush,
   FaTools,
   FaDatabase,
+  FaArrowRight,
 } from "react-icons/fa";
 
 const services = [
   {
     title: "Web Development",
     description:
-      "I build modern, fast, and functional websites using modern web technologies.",
+      "I build modern, fast, and functional websites using reliable and modern web technologies.",
     icon: <FaLaptopCode />,
   },
   {
     title: "Web Design & UI",
     description:
-      "I create clean, attractive, and user-friendly interfaces that provide a great user experience.",
+      "I create clean, attractive, and user-friendly interfaces focused on a smooth digital experience.",
     icon: <FaPaintBrush />,
   },
   {
@@ -48,24 +49,21 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-5">
+    <section id="services" className="services-section py-5">
       <div className="container py-5">
 
         {/* Heading */}
         <div className="text-center mb-5">
 
-          <span className="text-primary fw-semibold">
+          <span className="services-label">
             MY SERVICES
           </span>
 
-          <h2 className="display-6 fw-bold mt-2">
+          <h2 className="display-6 fw-bold mt-2 mb-3">
             What I Can Do For You
           </h2>
 
-          <p
-            className="text-muted mx-auto"
-            style={{ maxWidth: "700px" }}
-          >
+          <p className="text-muted mx-auto services-intro">
             I provide modern web development and design services
             focused on creating reliable, responsive, and
             user-friendly digital experiences.
@@ -76,39 +74,34 @@ export default function Services() {
         {/* Services */}
         <div className="row g-4">
 
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
               className="col-md-6 col-lg-4"
               key={service.title}
             >
-              <div
-                className="card border-0 shadow-sm h-100"
-                style={{
-                  transition:
-                    "transform 0.3s ease, box-shadow 0.3s ease",
-                }}
-              >
+              <div className="service-card h-100">
 
-                <div className="card-body p-4">
+                {/* Number */}
+                <div className="service-number">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
 
-                  {/* Icon */}
-                  <div
-                    className="text-primary mb-4"
-                    style={{ fontSize: "2.8rem" }}
-                  >
-                    {service.icon}
-                  </div>
+                {/* Icon */}
+                <div className="service-icon">
+                  {service.icon}
+                </div>
 
-                  {/* Title */}
-                  <h4 className="fw-bold mb-3">
-                    {service.title}
-                  </h4>
+                {/* Content */}
+                <h4 className="service-title">
+                  {service.title}
+                </h4>
 
-                  {/* Description */}
-                  <p className="text-muted mb-0">
-                    {service.description}
-                  </p>
+                <p className="service-description">
+                  {service.description}
+                </p>
 
+                <div className="service-arrow">
+                  <FaArrowRight />
                 </div>
 
               </div>

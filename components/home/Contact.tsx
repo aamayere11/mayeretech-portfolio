@@ -1,213 +1,288 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
 import {
   FaEnvelope,
   FaWhatsapp,
   FaGithub,
   FaMapMarkerAlt,
+  FaArrowRight,
 } from "react-icons/fa";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setStatus("Sending...");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("Message sent successfully! Thank you.");
+
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setStatus(data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("Unable to send message. Please try again.");
+    }
+  };
+
   return (
-    <section id="contact" className="py-5 bg-light">
+    <section id="contact" className="contact-section py-5">
       <div className="container py-5">
 
-        {/* Heading */}
         <div className="text-center mb-5">
-
-          <span className="text-primary fw-semibold">
+          <span className="contact-label">
             CONTACT ME
           </span>
 
-          <h2 className="display-6 fw-bold mt-2">
-            Let's Work Together
+          <h2 className="display-6 fw-bold mt-2 mb-3">
+            Let&apos;s Work Together
           </h2>
 
-          <p
-            className="text-muted mx-auto"
-            style={{ maxWidth: "650px" }}
-          >
-            Have a project idea, website you want to build,
-            or need help with an existing website? Feel free
-            to get in touch with me.
+          <p className="text-muted mx-auto contact-intro">
+            Have a project idea, website you want to build, or need help
+            with an existing website? Feel free to get in touch with me.
           </p>
-
         </div>
 
-        <div className="row g-5 align-items-start">
+        <div className="row g-5 align-items-stretch">
 
           {/* Contact Information */}
           <div className="col-lg-5">
+            <div className="contact-info-card h-100">
 
-            <h4 className="fw-bold mb-4">
-              Get In Touch
-            </h4>
+              <span className="contact-small-title">
+                GET IN TOUCH
+              </span>
 
-            {/* Email */}
-            <div className="d-flex align-items-center gap-3 mb-4">
+              <h3 className="fw-bold mt-2 mb-3">
+                Have a project in mind?
+              </h3>
 
-              <div className="text-primary fs-3">
-                <FaEnvelope />
+              <p className="contact-info-text mb-4">
+                I&apos;d love to hear about your project and discuss how
+                I can help turn your idea into a functional digital
+                experience.
+              </p>
+
+              {/* Email */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <FaEnvelope />
+                </div>
+
+                <div>
+                  <small>Email</small>
+
+                  <a href="mailto:ahmadabdulhadi932@gmail.com">
+                    ahmadabdulhadi932@gmail.com
+                  </a>
+                </div>
               </div>
 
-              <div>
-                <small className="text-muted d-block">
-                  Email
-                </small>
+              {/* WhatsApp */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <FaWhatsapp />
+                </div>
 
-                <a
-                  href="mailto:ahmadabdulhadi932@gmail.com"
-                  className="text-decoration-none text-dark"
-                >
-                  ahmadabdulhadi932@gmail.com
-                </a>
+                <div>
+                  <small>WhatsApp</small>
+
+                  <a
+                    href="https://wa.me/2349074618047"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    +234 907 461 8047
+                  </a>
+                </div>
               </div>
+
+              {/* GitHub */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <FaGithub />
+                </div>
+
+                <div>
+                  <small>GitHub</small>
+
+                  <a
+                    href="https://github.com/Aamayere11"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    github.com/Aamayere11
+                  </a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="contact-item">
+                <div className="contact-icon">
+                  <FaMapMarkerAlt />
+                </div>
+
+                <div>
+                  <small>Location</small>
+                  <span>Kaduna, Nigeria</span>
+                </div>
+              </div>
+
+              {/* WhatsApp CTA */}
+              <a
+                href="https://wa.me/2349074618047"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-whatsapp-btn"
+              >
+                Chat on WhatsApp
+                <FaArrowRight />
+              </a>
 
             </div>
-
-            {/* WhatsApp */}
-            <div className="d-flex align-items-center gap-3 mb-4">
-
-              <div className="text-success fs-3">
-                <FaWhatsapp />
-              </div>
-
-              <div>
-                <small className="text-muted d-block">
-                  WhatsApp
-                </small>
-
-                <a
-                  href="https://wa.me/2349074618047"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-decoration-none text-dark"
-                >
-                  +234 907 461 8047
-                </a>
-              </div>
-
-            </div>
-
-            {/* GitHub */}
-            <div className="d-flex align-items-center gap-3 mb-4">
-
-              <div className="text-dark fs-3">
-                <FaGithub />
-              </div>
-
-              <div>
-                <small className="text-muted d-block">
-                  GitHub
-                </small>
-
-                <a
-                  href="https://github.com/Aamayere11"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-decoration-none text-dark"
-                >
-                  github.com/Aamayere11
-                </a>
-              </div>
-
-            </div>
-
-            {/* Location */}
-            <div className="d-flex align-items-center gap-3">
-
-              <div className="text-danger fs-3">
-                <FaMapMarkerAlt />
-              </div>
-
-              <div>
-                <small className="text-muted d-block">
-                  Location
-                </small>
-
-                <span>
-                  Kaduna, Nigeria
-                </span>
-              </div>
-
-            </div>
-
           </div>
 
           {/* Contact Form */}
           <div className="col-lg-7">
 
-            <div className="card border-0 shadow-sm">
+            <div className="contact-form-card h-100">
 
-              <div className="card-body p-4 p-md-5">
+              <h4 className="fw-bold mb-2">
+                Send Me a Message
+              </h4>
 
-                <form>
+              <p className="text-muted mb-4">
+                Tell me a little about your project and I&apos;ll get back
+                to you.
+              </p>
 
-                  <div className="row g-3">
+              <form onSubmit={handleSubmit}>
 
-                    <div className="col-md-6">
-                      <label className="form-label fw-semibold">
-                        Your Name
-                      </label>
+                <div className="row g-3">
 
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter your name"
-                      />
-                    </div>
+                  <div className="col-md-6">
+                    <label className="form-label">
+                      Your Name
+                    </label>
 
-                    <div className="col-md-6">
-                      <label className="form-label fw-semibold">
-                        Email Address
-                      </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="form-control contact-input"
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
 
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Enter your email"
-                      />
-                    </div>
+                  <div className="col-md-6">
+                    <label className="form-label">
+                      Email Address
+                    </label>
 
-                    <div className="col-12">
-                      <label className="form-label fw-semibold">
-                        Subject
-                      </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="form-control contact-input"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
 
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="What is your project about?"
-                      />
-                    </div>
+                  <div className="col-12">
+                    <label className="form-label">
+                      Subject
+                    </label>
 
-                    <div className="col-12">
-                      <label className="form-label fw-semibold">
-                        Message
-                      </label>
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="form-control contact-input"
+                      placeholder="What is your project about?"
+                      required
+                    />
+                  </div>
 
-                      <textarea
-                        className="form-control"
-                        rows={5}
-                        placeholder="Tell me about your project..."
-                      ></textarea>
-                    </div>
+                  <div className="col-12">
+                    <label className="form-label">
+                      Message
+                    </label>
 
-                    <div className="col-12">
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="form-control contact-input"
+                      rows={6}
+                      placeholder="Tell me about your project..."
+                      required
+                    />
+                  </div>
 
-                      <button
-                        type="submit"
-                        className="btn btn-primary px-4 rounded-pill"
-                      >
-                        Send Message
-                      </button>
+                  <div className="col-12">
 
-                    </div>
+                    <button
+                      type="submit"
+                      className="contact-submit-btn"
+                    >
+                      Send Message
+                      <FaArrowRight />
+                    </button>
+
+                    {status && (
+                      <p className="mt-3 mb-0">
+                        {status}
+                      </p>
+                    )}
 
                   </div>
 
-                </form>
+                </div>
 
-              </div>
+              </form>
 
             </div>
 

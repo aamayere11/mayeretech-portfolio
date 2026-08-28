@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { FaCode } from "react-icons/fa";
+import { FaCode, FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,36 +12,38 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-light bg-white shadow-sm sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top main-navbar">
       <div className="container">
 
         {/* Brand */}
         <Link
           href="/"
-          className="navbar-brand fw-bold d-flex align-items-center gap-2"
+          className="navbar-brand d-flex align-items-center gap-2"
           onClick={closeMenu}
         >
-          <span className="text-primary fs-4">
+          <span className="brand-icon">
             <FaCode />
           </span>
 
-          <span>MAYERETECH</span>
+          <span className="brand-name">
+            MAYERETECH
+          </span>
         </Link>
 
         {/* Mobile Button */}
         <button
           type="button"
-          className="navbar-toggler"
+          className="navbar-toggler custom-toggler"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation"
           aria-expanded={isOpen}
         >
-          <span className="navbar-toggler-icon"></span>
+          {isOpen ? <FaTimes /> : <FaBars />}
         </button>
 
         {/* Navigation */}
-        <div className={`navbar-menu ${isOpen ? "open" : ""}`}>
-          <ul className="navbar-nav ms-auto align-items-lg-center">
+        <div className={`custom-navbar-collapse ${isOpen ? "show" : ""}`}>
+          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
 
             <li className="nav-item">
               <Link
@@ -65,6 +67,16 @@ export default function Navbar() {
 
             <li className="nav-item">
               <Link
+                href="#services"
+                className="nav-link"
+                onClick={closeMenu}
+              >
+                Services
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
                 href="#skills"
                 className="nav-link"
                 onClick={closeMenu}
@@ -83,20 +95,10 @@ export default function Navbar() {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link
-                href="#services"
-                className="nav-link"
-                onClick={closeMenu}
-              >
-                Services
-              </Link>
-            </li>
-
-            <li className="nav-item contact-item">
+            <li className="nav-item ms-lg-2 mt-2 mt-lg-0">
               <Link
                 href="#contact"
-                className="btn btn-primary px-4 rounded-pill"
+                className="navbar-contact-btn"
                 onClick={closeMenu}
               >
                 Contact Me
@@ -110,3 +112,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

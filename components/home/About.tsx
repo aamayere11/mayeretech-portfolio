@@ -1,115 +1,153 @@
+import {
+  FaCheck,
+  FaCode,
+  FaLaptopCode,
+  FaMobileAlt,
+  FaLightbulb,
+} from "react-icons/fa";
+
 export default function About() {
   return (
-    <section id="about" className="py-5 bg-light">
+    <section id="about" className="about-section py-5">
       <div className="container py-5">
+
+        {/* Section Header */}
+        <div className="text-center mb-5">
+          <span className="about-label">ABOUT ME</span>
+
+          <h2 className="display-6 fw-bold mt-2">
+            Building Digital Experiences That Matter
+          </h2>
+
+          <p className="text-muted mx-auto about-intro">
+            I combine creativity and modern web technologies to build
+            digital experiences that are useful, responsive, and easy to use.
+          </p>
+        </div>
 
         <div className="row align-items-center g-5">
 
-          {/* Left */}
+          {/* Profile Illustration */}
           <div className="col-lg-5">
-            <div className="text-center">
-              <div
-                className="mx-auto d-flex align-items-center justify-content-center"
-                style={{
-                  width: "260px",
-                  height: "260px",
-                  borderRadius: "50%",
-                  background:
-                    "linear-gradient(135deg, #0d6efd, #6ea8fe)",
-                  boxShadow:
-                    "0 20px 50px rgba(13, 110, 253, 0.2)",
-                }}
-              >
-                <span
-                  className="text-white fw-bold"
-                  style={{ fontSize: "4rem" }}
-                >
-                  AA
-                </span>
+            <div className="about-visual">
+
+              <div className="about-main-circle">
+                <div className="about-inner-circle">
+                  <FaCode className="about-code-icon" />
+                </div>
               </div>
+
+              {/* Decorative Elements */}
+              <div className="about-floating-card about-card-one">
+                <FaLaptopCode />
+                <span>Web Development</span>
+              </div>
+
+              <div className="about-floating-card about-card-two">
+                <FaMobileAlt />
+                <span>Responsive Design</span>
+              </div>
+
             </div>
           </div>
 
-          {/* Right */}
+          {/* Content */}
           <div className="col-lg-7">
 
-            <span className="text-primary fw-semibold">
-              ABOUT ME
+            <span className="about-small-title">
+              WHO I AM
             </span>
 
-            <h2 className="display-6 fw-bold mt-2 mb-4">
-              Building Digital Experiences That Matter
-            </h2>
+            <h3 className="fw-bold mt-2 mb-4">
+              Front-End Developer & Web Designer
+            </h3>
 
-            <p className="text-muted">
-              I'm Abdulhadi Ahmad, a passionate Front-End Developer
-              and Web Designer focused on building modern,
-              responsive, and user-friendly websites.
+            <p className="about-text">
+              I&apos;m Abdulhadi Ahmad, a passionate Front-End Developer
+              and Web Designer focused on building modern, responsive,
+              and user-friendly websites and web applications.
             </p>
 
-            <p className="text-muted">
-              I enjoy turning ideas into functional digital
-              experiences using modern technologies such as
-              React, Next.js, JavaScript, Bootstrap, and MongoDB.
+            <p className="about-text">
+              I enjoy transforming ideas into functional digital
+              experiences using technologies such as React, Next.js,
+              JavaScript, Bootstrap, and MongoDB.
             </p>
 
-            <p className="text-muted mb-4">
-              My goal is to create websites that are not only
-              visually attractive but also fast, accessible,
-              responsive, and easy to use.
+            <p className="about-text mb-4">
+              My goal is to create digital products that are visually
+              appealing, fast, accessible, responsive, and easy to use.
             </p>
 
-            {/* Skills highlights */}
+            {/* Highlights */}
             <div className="row g-3">
 
               <div className="col-sm-6">
-                <div className="d-flex align-items-center gap-3">
-                  <div className="text-primary fs-4">✓</div>
+                <div className="about-highlight">
+                  <div className="about-check">
+                    <FaCheck />
+                  </div>
                   <div>
                     <strong>Responsive Design</strong>
-                    <p className="text-muted mb-0 small">
-                      Mobile-friendly websites
-                    </p>
+                    <p>Mobile-friendly experiences</p>
                   </div>
                 </div>
               </div>
 
               <div className="col-sm-6">
-                <div className="d-flex align-items-center gap-3">
-                  <div className="text-primary fs-4">✓</div>
+                <div className="about-highlight">
+                  <div className="about-check">
+                    <FaCheck />
+                  </div>
                   <div>
                     <strong>Modern Development</strong>
-                    <p className="text-muted mb-0 small">
-                      React & Next.js applications
-                    </p>
+                    <p>React & Next.js applications</p>
                   </div>
                 </div>
               </div>
 
               <div className="col-sm-6">
-                <div className="d-flex align-items-center gap-3">
-                  <div className="text-primary fs-4">✓</div>
+                <div className="about-highlight">
+                  <div className="about-check">
+                    <FaCheck />
+                  </div>
                   <div>
                     <strong>Clean UI</strong>
-                    <p className="text-muted mb-0 small">
-                      Simple and professional interfaces
-                    </p>
+                    <p>Simple & professional interfaces</p>
                   </div>
                 </div>
               </div>
 
               <div className="col-sm-6">
-                <div className="d-flex align-items-center gap-3">
-                  <div className="text-primary fs-4">✓</div>
+                <div className="about-highlight">
+                  <div className="about-check">
+                    <FaCheck />
+                  </div>
                   <div>
                     <strong>Problem Solving</strong>
-                    <p className="text-muted mb-0 small">
-                      Turning ideas into solutions
-                    </p>
+                    <p>Turning ideas into solutions</p>
                   </div>
                 </div>
               </div>
 
+            </div>
+
+            {/* Technologies */}
+            <div className="about-tech mt-4">
+              <div className="about-tech-title">
+                <FaLightbulb />
+                <span>Technologies I Work With</span>
+              </div>
+
+              <div className="d-flex flex-wrap gap-2 mt-3">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>React</span>
+                <span>Next.js</span>
+                <span>Bootstrap</span>
+                <span>MongoDB</span>
+              </div>
             </div>
 
           </div>
